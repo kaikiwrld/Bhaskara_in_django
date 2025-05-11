@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+env.bak/
+venv.bak/
+
+# Django migrations
+*/migrations/*.py
+*/migrations/*.pyc
+
+# SQLite database
+*.sqlite3
+
+# Django secret key file (se separado)
+*.env
+.env.*
+
+# Static and media files
+/staticfiles/
+/media/
+/static/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Test coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Logs
+*.log
+
+# Node (caso use npm/yarn)
+node_modules/

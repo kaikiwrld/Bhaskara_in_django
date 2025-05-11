@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section class=" flex flex-col items-center justify-center p-4">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Bhaskara Calculator</h1>
+
+        <form action="{% url 'calcular_baskhara' %}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Valor de A:</label>
+                <input type="text" name="a" placeholder="Ex: 1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Valor de B:</label>
+                <input type="text" name="b" placeholder="Ex: -3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Valor de C:</label>
+                <input type="text" name="c" placeholder="Ex: 2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="flex items-center justify-between">
+                <input type="submit" value="Calcular" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            </div>
+        </form>
+
+        <ul class="text-gray-800 text-lg">
+            {% for raiz in result %}
+                <li class="mb-1">Raiz {{ forloop.counter }}: {{ raiz }}</li>
+            {% empty %}
+                <li>Nenhum resultado.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
+
+
