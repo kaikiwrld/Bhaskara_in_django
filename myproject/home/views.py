@@ -20,19 +20,25 @@ def calcular_baskhara(request):
 
             if bask.delta < 0:
                 resultado = ['Não existem raízes reais.']
+
             elif bask.delta == 0:
                 x = -bask.b / (2*bask.a)
                 bask.x1 = x
                 bask.x2 = x
                 resultado = [x]
+                bask.save()
+
             else:
                 bask.x1 = (-bask.b + math.sqrt(bask.delta)) / (2*bask.a)
                 bask.x2 = (-bask.b - math.sqrt(bask.delta)) / (2*bask.a)
                 resultado = [bask.x1, bask.x2]
+                bask.save()
 
-            bask.save()
         except (TypeError, ValueError):
             resultado = ['Erro: insira apenas números válidos.']
+
+        except:
+            resultado = ['Erro: nao foi possivel concluir a operacao.']
 
         return render(request, 'home/index.html', {'result':resultado})
     return render(request, 'home/index.html')
@@ -41,3 +47,7 @@ def calcular_baskhara(request):
 def lista_bhaskaras(request):
     bhaskaras = Bhaskara.objects.all().order_by('-id')
     return render(request, 'home/table.html', {'bhaskaras': bhaskaras})
+
+
+def deleta_bhaskaras(request):
+    return render(request, 'home/table.html')
